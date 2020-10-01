@@ -1,0 +1,8 @@
+Enroll to StackOverflow(User)(-> Question preparation workflow)(User)
+Question prepared(User)
+Question asked(User)
+Question feedback( -> Question received Up/Down button workflow)(Other users)
+Question received answers(Other users)
+Answers received feedback(Other users)
+Good answer received(User)
+
