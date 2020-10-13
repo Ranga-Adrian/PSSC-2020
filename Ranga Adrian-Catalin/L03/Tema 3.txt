@@ -1,0 +1,37 @@
+Bounded context: "Question context"
+	Workflow: "Add new question"
+		-> Triggered by: "Add new question request received"
+		-> Input: "New question form"(title, body, tags)
+		-> Output: "New question created and posted"
+		-> Side effects: "User receive notification"
+
+Workflow: "Add a new question"
+	Input: "New question form"
+	Output: "Accepted/Invalid new question, posted if is accepted"
+
+//step 1
+	Do validate new question form
+	If form is invalid then
+		stop
+
+//step 2
+	Send confirmation notification about the new question created.
+
+//step 3
+	Return "New question created" event
+
+Substep: "Validate new question form"
+	-> Input: "Unvalidated question form"
+	-> Output: "Validated question form"
+	-> Dependencies: Question validation, Title validator, Tag validator, 
+			Text analysing with Machine Learning.
+
+	-> Validate the title : 15 characters min.
+	-> Validate the tag : 1 tag min. 5 tags max.
+	-> Validate the body : 30 characters min.
+
+If all validations passed thed
+	-> return validated new question form
+	-> return notification about the confirmation of the question
+else
+	-> return validation error & propose manual review
