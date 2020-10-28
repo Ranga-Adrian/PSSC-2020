@@ -15,16 +15,16 @@ namespace Test.App
         {
             
             var cmd_profile = new CreateProfileCmd("Ion", string.Empty, "Ionescu", "ion.inonescu@company.com");
-            var result_profile = CreateProfile(cmdProfile);
+            var result_profile = CreateProfile(cmd_profile);
             var cmd_question = new CreateQuestionCmd("How to create an array of objects in C++?", "I am trying to create an array of objects of my class in c++. When I print the objects, it skips the first element of array (a[0]). I have read many forums, but I can't find the problem. Who can see it?.", "C++");
-            var result_question = CreateQuestion(cmdQuestion);
+            var result_question = CreateQuestion(cmd_question);
 
-            resultProfile.Match(
+            result_profile.Match(
                     ProcessProfileCreated,
                     ProcessProfileNotCreated,
                     ProcessInvalidProfile
                 );
-            resultQuestion.Match(
+            result_question.Match(
                 ProcessQuestionCraeted,
                 ProcessQuestionNotCreated,
                 ProcessInvalidQuestion

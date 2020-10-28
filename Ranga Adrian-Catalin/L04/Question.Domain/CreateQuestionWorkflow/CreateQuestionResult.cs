@@ -11,6 +11,7 @@ namespace Question.Domain.CreateQuestionWorkflow
     {
         public interface ICreateQuestionResult
         {
+            
         }
 
         public class QuestionCreated : ICreateQuestionResult

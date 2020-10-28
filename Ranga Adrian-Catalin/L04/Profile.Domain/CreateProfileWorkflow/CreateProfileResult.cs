@@ -10,7 +10,9 @@ namespace Profile.Domain.CreateProfileWorkflow
     public static partial class CreateProfileResult
     {
         public interface ICreateProfileResult
-        {    }
+        {
+           
+        }
 
         public class ProfileCreated: ICreateProfileResult
         {
