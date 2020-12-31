@@ -11,19 +11,22 @@ namespace Profile.Domain.CreateProfileWorkflow
     {
         public interface ICreateProfileResult
         {
-           
+            void Match(global::System.Func<ProfileCreated, ICreateProfileResult> processProfileCreated, global::System.Func<ProfileNotCreated, ICreateProfileResult> processProfileNotCreated, global::System.Func<ProfileValidationFailed, ICreateProfileResult> processInvalidProfile);
         }
 
         public class ProfileCreated: ICreateProfileResult
         {
             public Guid ProfileId { get; private set; }
             public string Email { get; private set; }
+	    public int VoteCount { get; private set; }
+            public IReadOnlyCollection<VoteEnum> AllVotes { get; private set; }
 
             public ProfileCreated(Guid profileId, string email)
             {
                 ProfileId = profileId;
                 Email = email;
             }
+
         }
 
         public class ProfileNotCreated: ICreateProfileResult
@@ -34,6 +37,7 @@ namespace Profile.Domain.CreateProfileWorkflow
             {
                 Reason = reason;
             }
+
         }
 
         public class ProfileValidationFailed: ICreateProfileResult
@@ -44,6 +48,7 @@ namespace Profile.Domain.CreateProfileWorkflow
             {
                 ValidationErrors = errors.AsEnumerable();
             }
+
         }
     }
 }
