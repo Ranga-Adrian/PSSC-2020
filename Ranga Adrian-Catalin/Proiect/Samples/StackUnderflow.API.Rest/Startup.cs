@@ -37,6 +37,7 @@ namespace FakeSO.API.Rest
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddOperations(typeof(CreateTenantAdapter).Assembly);
+            services.AddOperations(typeof(CreateQuestionAdapter).Assembly);
             services.AddSingleton<IExecutionContext, LiveExecutionContext>();
             services.AddTransient<IInterpreterAsync>(sp => new LiveInterpreterAsync(sp));
 

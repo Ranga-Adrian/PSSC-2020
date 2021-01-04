@@ -81,7 +81,9 @@
   <ItemGroup>
     <Build Include="base\Tables\Badge.sql" />
     <Build Include="base\Tables\Post.sql" />
-    <Build Include="base\Tables\PostTag.sql" />
+    <Build Include="base\Tables\PostTag.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Build>
     <Build Include="base\Tables\PostType.sql" />
     <Build Include="base\Tables\PostView.sql" />
     <Build Include="base\Tables\Tag.sql" />
@@ -129,6 +131,9 @@
     <Build Include="Security\Policies\ForumAdminPolicy.sql" />
     <Build Include="StoredProcedures\dbo.BackofficeHttpController.sql" />
     <Build Include="StoredProcedures\base.QuestionProjection.sql" />
+    <Build Include="base\Tables\Question.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Build>
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Backend.Database.refactorlog" />

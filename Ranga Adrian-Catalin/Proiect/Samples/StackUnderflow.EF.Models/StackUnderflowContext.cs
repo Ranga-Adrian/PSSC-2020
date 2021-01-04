@@ -3,6 +3,7 @@ using Access.Primitives.EFCore.DSL;
 using Access.Primitives.IO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using StackUnderflow.DatabaseModel.Models;
 
 namespace StackUnderflow.EF.Models
 {
@@ -22,6 +23,7 @@ namespace StackUnderflow.EF.Models
                select dbContext;
 
         public virtual DbSet<Badge> Badge { get; set; }
+        public virtual DbSet<Question> Question { get; set; }
         public virtual DbSet<Post> Post { get; set; }
         public virtual DbSet<PostTag> PostTag { get; set; }
         public virtual DbSet<PostType> PostType { get; set; }
@@ -39,7 +41,7 @@ namespace StackUnderflow.EF.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=ACCESS-1303SF2\\SQL2017;Database=StackUnderflow;Integrated Security=true;");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-DQGF9O7;Database=StackOverflow;Trusted_Connection=true");
             }
         }
 
@@ -284,6 +286,18 @@ namespace StackUnderflow.EF.Models
 
                 entity.Ignore(e => e.SysStartTime);
                 entity.Ignore(e => e.SysEndTime);
+            });
+
+
+            modelBuilder.Entity<Question>(entity =>
+            {
+                entity.HasKey(e => e.QuestionID);
+
+                entity.Property(e => e.Title).HasMaxLength(255);
+                entity.Property(e => e.Description).HasMaxLength(255); 
+                entity.Property(e => e.QuestionTag).HasMaxLength(255);
+             // 
+
             });
 
             modelBuilder.Entity<UserBadge>(entity =>
